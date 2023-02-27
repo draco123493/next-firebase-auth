@@ -40,7 +40,7 @@ const getUserFromCookies = async ({
   authCookieValue,
   authCookieSigValue,
 }) => {
-  const { keys, secure, signed } = getConfig().cookies
+  const { keys, secure, signed, unified } = getConfig().cookies
   let user
 
   // Make sure the Firebase Admin SDK is initialized.
@@ -85,13 +85,14 @@ const getUserFromCookies = async ({
     logDebug(
       '[getUserFromCookies] Attempting to get user info from cookies via the ID token.'
     )
-    const cookieValStr = getCookie(
+    let cookieValStr = getCookie(
       getAuthUserTokensCookieName(),
       {
         req,
       },
       { keys, secure, signed }
     )
+    if (unified && cookieValStr) cookieValStr = cookieValStr.split('|-|')[0];
     const { idToken, refreshToken } = cookieValStr
       ? JSON.parse(cookieValStr)
       : {}
@@ -119,13 +120,14 @@ const getUserFromCookies = async ({
     logDebug(
       '[getUserFromCookies] Attempting to get user info from cookies (not using the ID token).'
     )
-    const cookieValStr = getCookie(
+    let cookieValStr = getCookie(
       getAuthUserCookieName(),
       {
         req,
       },
       { keys, secure, signed }
     )
+    if (unified && cookieValStr) cookieValStr = cookieValStr.split('|-|')[1];
     if (cookieValStr) {
       logDebug(
         '[getUserFromCookies] Successfully retrieved the user info from cookies.'
