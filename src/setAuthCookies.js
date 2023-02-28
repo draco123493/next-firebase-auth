@@ -37,7 +37,7 @@ const setAuthCookies = async (req, res, { token: userProvidedToken } = {}) => {
   }
 
   const { unified, name } = getConfig().cookies
-  
+
   // Pick a subset of the config.cookies options to
   // pass to setCookie.
   const cookieOptions = (({
@@ -102,15 +102,16 @@ const setAuthCookies = async (req, res, { token: userProvidedToken } = {}) => {
   } else {
     setCookie(
       name,
-      `${JSON.stringify({ idToken, refreshToken })}|-|${AuthUser.serialize({ includeToken: false })}`,
+      `${JSON.stringify({ idToken, refreshToken })}|-|${AuthUser.serialize({
+        includeToken: false,
+      })}`,
       {
         req,
-        res
+        res,
       },
       cookieOptions
     )
   }
-  
 
   if (AuthUser.id) {
     logDebug('[setAuthCookies] Set auth cookies for an authenticated user.')

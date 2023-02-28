@@ -92,7 +92,8 @@ const getUserFromCookies = async ({
       },
       { keys, secure, signed }
     )
-    if (unified && cookieValStr) cookieValStr = cookieValStr.split('|-|')[0];
+    // eslint-disable-next-line prefer-destructuring
+    if (unified && cookieValStr) cookieValStr = cookieValStr.split('|-|')[0]
     const { idToken, refreshToken } = cookieValStr
       ? JSON.parse(cookieValStr)
       : {}
@@ -127,7 +128,8 @@ const getUserFromCookies = async ({
       },
       { keys, secure, signed }
     )
-    if (unified && cookieValStr) cookieValStr = cookieValStr.split('|-|')[1];
+    // eslint-disable-next-line prefer-destructuring
+    if (unified && cookieValStr) cookieValStr = cookieValStr.split('|-|')[1]
     if (cookieValStr) {
       logDebug(
         '[getUserFromCookies] Successfully retrieved the user info from cookies.'
