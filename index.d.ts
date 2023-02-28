@@ -129,6 +129,8 @@ export const getUserFromCookies: (options: {
   authCookieSigValue?: string
 }) => Promise<AuthUser>
 
+export const initFirebaseAdminSDK: () => void
+
 export const useAuthUser: () => AuthUserContext
 
 export const verifyIdToken: (token: string) => Promise<AuthUser>
