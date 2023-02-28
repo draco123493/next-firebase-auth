@@ -5,6 +5,7 @@ import initFirebaseClientSDK from 'src/initFirebaseClientSDK'
 import isClientSide from 'src/isClientSide'
 import AuthAction from 'src/AuthAction'
 import initCommon from 'src/initCommon'
+import initFirebaseAdminSDK from 'src/initFirebaseAdminSDK'
 
 const init = (config = {}) => {
   initCommon(config)
@@ -54,4 +55,5 @@ export default {
   verifyIdToken,
   AuthAction,
   getUserFromCookies,
+  initFirebaseAdminSDK,
 }
