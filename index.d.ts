@@ -100,7 +100,8 @@ interface InitConfig {
   }
   cookies: Cookies.Option &
     Cookies.SetOption & {
-      name: string
+      name: string,
+      unified: boolean
     }
   debug?: boolean
 }
