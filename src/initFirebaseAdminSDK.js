@@ -12,6 +12,8 @@ import logDebug from 'src/logDebug'
 
 const initFirebaseAdminSDK = () => {
   const apps = getApps()
+  logDebug('[init] Called.')
+  logDebug(apps.map(app => app.name).join(', '))
   if (!apps.length) {
     const { firebaseAdminInitConfig, useFirebaseAdminDefaultCredential } =
       getConfig()
