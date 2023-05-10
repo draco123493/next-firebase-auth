@@ -14,7 +14,7 @@ const initFirebaseAdminSDK = () => {
   const apps = getApps()
   logDebug('[init] Called.')
   logDebug(apps.map(app => app.name).join(', '))
-  if (!apps.length) {
+  if (!apps.length || !apps.find(app => app.name === '[DEFAULT]')) {
     const { firebaseAdminInitConfig, useFirebaseAdminDefaultCredential } =
       getConfig()
     if (!firebaseAdminInitConfig && !useFirebaseAdminDefaultCredential) {
