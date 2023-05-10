@@ -174,8 +174,12 @@ export const verifyIdToken = async (token, refreshToken = null) => {
  * @return {Object} response.AuthUser - An AuthUser instance
  */
 export const getCustomIdAndRefreshTokens = async (token) => {
+  logDebug('[setAuthCookies] Running (First Line)');
+
   // Ensure `fetch` is defined.
   throwIfFetchNotDefined()
+
+  logDebug('[setAuthCookies] Running (Second Line)');
 
   initFirebaseAdminSDK()
 

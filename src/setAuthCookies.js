@@ -32,9 +32,12 @@ const setAuthCookies = async (req, res, { token: userProvidedToken } = {}) => {
     ))
   } catch (e) {
     logDebug(
-      '[setAuthCookies] Failed to verify the ID token. Cannot authenticate the user or get a refresh token.',
-      e
+      '[setAuthCookies] Failed to verify the ID token. Cannot authenticate the user or get a refresh token.'
     )
+    logDebug(
+      '[setAuthCookies] The error is:'
+    )
+    logDebug(e)
   }
 
   const { unified, name } = getConfig().cookies
