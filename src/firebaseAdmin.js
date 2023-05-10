@@ -155,6 +155,8 @@ export const verifyIdToken = async (token, refreshToken = null) => {
     logDebug(
       `[verifyIdToken] Successfully verified the ID token. The user is authenticated.`
     )
+  }else{
+    logDebug('[verifyIdToken] Failed verifying the ID token. The user is not authenticated.');
   }
   return AuthUser
 }
@@ -176,6 +178,8 @@ export const getCustomIdAndRefreshTokens = async (token) => {
   throwIfFetchNotDefined()
 
   initFirebaseAdminSDK()
+
+  logDebug('[setAuthCookies] Verifying ID token.');
 
   const AuthUser = await verifyIdToken(token)
   const firebaseAdminAuth = getAuth()
